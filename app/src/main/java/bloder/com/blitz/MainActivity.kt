@@ -3,7 +3,9 @@ package bloder.com.blitz
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import bloder.com.core.enableWhen
-import br.com.ifood.toolkit.form_validator.mask.withMask
+import bloder.com.core.mask.then
+import bloder.com.core.mask.withMask
+import bloder.com.core.mask.withMaskSequence
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +15,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button.enableWhen {
-            edit1.isEmail()
+            edit1.isEmail() onValidationSuccess {
+
+            } onValidationError {
+
+            }
             edit2.isFilled() withMask "###.##-####"
             edit3.isFollowingRegex("[^-?0-9]+")
         }

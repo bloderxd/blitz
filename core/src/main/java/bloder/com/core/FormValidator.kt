@@ -8,20 +8,41 @@ import bloder.com.core.validation.Validations
 
 private typealias Validated = Boolean
 private typealias Condition = (String) -> Validated
+internal typealias ValidationConditionAction = (EditText) -> Unit
 
 class FormValidator(private val view: View) {
 
     private val conditions: MutableMap<EditText, Validated> = mutableMapOf()
-    private val textWatchers: MutableMap<EditText, TextWatcher> = mutableMapOf()
+    private val validationTextWatchers: MutableMap<EditText, TextWatcher> = mutableMapOf()
+    private val successConditionTextWatchers: MutableMap<EditText, TextWatcher> = mutableMapOf()
+    private val errorConditionTextWatchers: MutableMap<EditText, TextWatcher> = mutableMapOf()
+    private val successConditions: MutableMap<EditText, ValidationConditionAction> = mutableMapOf()
+    private val errorConditions: MutableMap<EditText, ValidationConditionAction> = mutableMapOf()
 
-    fun buildValidation(editText: EditText, condition: Condition) : EditText {
+    internal fun bindValidation(editText: EditText, condition: Condition) : EditText {
         conditions[editText] = condition(editText.text.toString())
-        editText.removeTextChangedListener(textWatchers[editText])
-        textWatchers[editText] = BlitzTextWatcher {
+        editText.removeTextChangedListener(validationTextWatchers[editText])
+        validationTextWatchers[editText] = BlitzTextWatcher {
             conditions[editText] = condition(it)
             checkIfViewCanBeEnable()
         }
-        editText.addTextChangedListener(textWatchers[editText])
+        editText.addTextChangedListener(validationTextWatchers[editText])
+        return editText
+    }
+
+    internal fun bindValidationConditionAction(isSuccessCondition: Boolean, editText: EditText, action: ValidationConditionAction) : EditText {
+        if (isSuccessCondition) {
+            successConditionTextWatchers[editText]?.let {
+                editText.removeTextChangedListener(it)
+            }
+            successConditionTextWatchers[editText] = BlitzTextWatcher {
+                action(editText)
+            }
+            successConditions[editText] = action
+            editText
+        } else {
+            errorConditions[editText] = action
+        }
         return editText
     }
 

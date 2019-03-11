@@ -1,8 +1,7 @@
-package br.com.ifood.toolkit.form_validator.mask
+package bloder.com.core.mask
 
 import android.text.TextWatcher
 import android.widget.EditText
-import bloder.com.core.mask.BlitzMaskFormatter
 
 private object MaskDsl {
 
@@ -21,8 +20,9 @@ infix fun EditText.withMask(mask: String) = if (mask.isNotEmpty() && mask.isNotB
     MaskDsl.injectMask(this, BlitzMaskFormatter(this, mask))
 } else {}
 
-infix fun EditText.withMaskSequence(masks: MutableList<String>) = MaskDsl.injectMask(this, BlitzMaskFormatter(this, masks.flatMap { listOf(
-    BlitzMaskFormatter.Mask(it, it.filter { char -> char == '#' }.length))
+infix fun EditText.withMaskSequence(masks: MutableList<String>) = MaskDsl.injectMask(this, BlitzMaskFormatter(this, masks.flatMap {
+    listOf(
+            BlitzMaskFormatter.Mask(it, it.filter { char -> char == '#' }.length))
 }))
 
 infix fun String.then(mask: String) : MutableList<String> = mutableListOf(this, mask)
