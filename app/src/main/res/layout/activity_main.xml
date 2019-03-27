@@ -45,4 +45,35 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/bg_button"/>
 
+    <ImageView
+        android:id="@+id/arrow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_above="@id/button"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="100dp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/arrow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_above="@id/button"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="100dp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/arrow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_above="@id/button"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="100dp"
+        android:visibility="gone"/>
+
 </RelativeLayout>

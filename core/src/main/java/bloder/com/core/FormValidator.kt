@@ -14,10 +14,7 @@ class FormValidator(private val view: View) {
 
     private val conditions: MutableMap<EditText, Validated> = mutableMapOf()
     private val validationTextWatchers: MutableMap<EditText, TextWatcher> = mutableMapOf()
-    private val successConditionTextWatchers: MutableMap<EditText, TextWatcher> = mutableMapOf()
-    private val errorConditionTextWatchers: MutableMap<EditText, TextWatcher> = mutableMapOf()
     private val successConditions: MutableMap<EditText, ValidationConditionAction> = mutableMapOf()
-    private val errorConditions: MutableMap<EditText, ValidationConditionAction> = mutableMapOf()
 
     internal fun bindValidation(editText: EditText, condition: Condition) : EditText {
         conditions[editText] = condition(editText.text.toString())
@@ -30,24 +27,23 @@ class FormValidator(private val view: View) {
         return editText
     }
 
-    internal fun bindValidationConditionAction(isSuccessCondition: Boolean, editText: EditText, action: ValidationConditionAction) : EditText {
-        if (isSuccessCondition) {
-            successConditionTextWatchers[editText]?.let {
-                editText.removeTextChangedListener(it)
-            }
-            successConditionTextWatchers[editText] = BlitzTextWatcher {
-                action(editText)
-            }
-            successConditions[editText] = action
-            editText
-        } else {
-            errorConditions[editText] = action
+    internal fun bindSuccessConditionAction(editText: EditText, action: ValidationConditionAction) : EditText {
+        successConditions[editText] = action
+        return editText
+    }
+
+    internal fun bindErrorValidationAction(editText: EditText, action: ValidationConditionAction) : EditText {
+        editText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus && conditions[editText] == false) action(editText)
         }
         return editText
     }
 
     fun checkIfViewCanBeEnable() {
-        view.isEnabled = conditions.filter { !it.value }.isEmpty()
+        view.isEnabled = conditions.filter {
+            if (it.value) successConditions[it.key]?.invoke(it.key)
+            !it.value
+        }.isEmpty()
     }
 }
 

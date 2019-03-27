@@ -19,8 +19,8 @@ open class Validations(private val validator: FormValidator) {
     fun EditText.isFilled() : EditText = validator.bindValidation(this) { it.isNotEmpty() }
 
     infix fun EditText.onValidationSuccess(action: ValidationConditionAction) : EditText =
-            validator.bindValidationConditionAction(true, this, action)
+            validator.bindSuccessConditionAction(this, action)
 
     infix fun EditText.onValidationError(action: ValidationConditionAction) : EditText =
-            validator.bindValidationConditionAction(false, this, action)
+            validator.bindErrorValidationAction(this, action)
 }
