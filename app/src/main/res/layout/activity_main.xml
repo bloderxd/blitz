@@ -24,10 +24,9 @@
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
-        android:inputType="number"
         android:layout_below="@+id/edit1"/>
 
-    <android.support.v7.widget.AppCompatEditText
+    <EditText
         android:id="@+id/edit3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +34,6 @@
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
-        android:inputType="number"
         android:layout_below="@+id/edit2"/>
 
     <CheckBox

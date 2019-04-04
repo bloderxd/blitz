@@ -1,5 +1,6 @@
 package bloder.com.core.mask
 
+import android.text.InputType
 import android.text.TextWatcher
 import android.widget.EditText
 
@@ -9,6 +10,7 @@ private object MaskDsl {
 
     fun injectMask(editText: EditText, textWatcher: TextWatcher) {
         editText.removeTextChangedListener(textWatchers[editText])
+        editText.inputType = InputType.TYPE_CLASS_NUMBER
         textWatcher.let {
             textWatchers[editText] = it
             editText.addTextChangedListener(it)
