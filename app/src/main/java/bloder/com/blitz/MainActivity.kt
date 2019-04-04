@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import bloder.com.core.enableWhen
 import bloder.com.core.enableWhenUsing
+import bloder.com.core.mask.BlitzMaskFormatter
+import bloder.com.core.mask.then
 import bloder.com.core.mask.withMask
+import bloder.com.core.mask.withMaskSequence
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        edit3 withMask "###.##-####"
+        edit3 withMaskSequence("##/##" then "####-####" then "#####>###<#####")
 
         button.enableWhenUsing(CustomValidationExample()) {
             edit1.isEmail() onValidationSuccess {

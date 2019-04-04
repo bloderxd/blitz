@@ -2,6 +2,7 @@ package bloder.com.core.mask
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 
 import java.util.Collections
@@ -35,11 +36,14 @@ open class BlitzMaskFormatter(private val editText: EditText, masks: List<Mask>)
         }
     }
 
-    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+
+    override fun afterTextChanged(s: Editable) {
         if (isUpdating) {
             isUpdating = false
             return
         }
+        Log.d("MASK_HUE", "LOGGED: $s")
         val unmasked = unmask(s.toString())
         val mask = getCorrectMask(unmasked.length)
         val updatedMask: String
@@ -48,8 +52,6 @@ open class BlitzMaskFormatter(private val editText: EditText, masks: List<Mask>)
         editText.setText(updatedMask)
         editText.setSelection(Math.max(0, selectionEnd - (lastTextLength - updatedMask.length)))
     }
-
-    override fun afterTextChanged(s: Editable) {}
 
     private fun getCorrectMask(length: Int): Mask? {
         var correctMask: Mask? = null
@@ -73,6 +75,8 @@ open class BlitzMaskFormatter(private val editText: EditText, masks: List<Mask>)
 
     fun unmask(string: String): String = string.replace("[^0-9]".toRegex(), "")
 
+    fun currentUnmaskedText(): String = unmask(editText.text.toString())
+
     class Mask @JvmOverloads constructor(private val mMaskString: String,
                                          private val mMaskChar: Char = DEFAULT_MASK_CHAR, val mMaxCharsToApply: Int = MAX_CHAR_UNLIMITED) {
 
@@ -82,7 +86,8 @@ open class BlitzMaskFormatter(private val editText: EditText, masks: List<Mask>)
             var nextUnmaskedCharIndex = 0
             val masked = StringBuilder()
             var i = 0
-            while (i < mMaskString.length && nextUnmaskedCharIndex < unmaskedString.length) { val maskStringChar = mMaskString[i]
+            while (i < mMaskString.length && nextUnmaskedCharIndex < unmaskedString.length) {
+                val maskStringChar = mMaskString[i]
                 if (maskStringChar == mMaskChar) {
                     masked.append(unmaskedString[nextUnmaskedCharIndex])
                     nextUnmaskedCharIndex++
