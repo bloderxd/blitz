@@ -3,12 +3,10 @@ package bloder.com.blitz
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import bloder.com.core.enableWhen
-import bloder.com.core.enableWhenUsing
-import bloder.com.core.mask.BlitzMaskFormatter
-import bloder.com.core.mask.then
-import bloder.com.core.mask.withMask
-import bloder.com.core.mask.withMaskSequence
+import bloder.com.blitzcore.enableWhenUsing
+import bloder.com.blitzcore.mask.then
+import bloder.com.blitzcore.mask.withMask
+import bloder.com.blitzcore.mask.withMaskSequence
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

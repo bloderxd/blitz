@@ -1,9 +1,9 @@
-package bloder.com.core
+package bloder.com.blitzcore
 
 import android.view.View
-import bloder.com.core.validation.BlitzValidation
-import bloder.com.core.validation.DefaultBlitzValidations
-import bloder.com.core.validation.with
+import bloder.com.blitzcore.validation.BlitzValidation
+import bloder.com.blitzcore.validation.DefaultBlitzValidations
+import bloder.com.blitzcore.validation.with
 
 internal typealias Validated = Boolean
 internal typealias ViewCondition = () -> Validated

@@ -1,8 +1,9 @@
-package bloder.com.core.validation
+package bloder.com.blitzcore.validation
 
 import android.view.View
-import android.widget.EditText
-import bloder.com.core.*
+import bloder.com.blitzcore.FormValidator
+import bloder.com.blitzcore.Validated
+import bloder.com.blitzcore.ValidationConditionAction
 
 abstract class BlitzValidation {
 

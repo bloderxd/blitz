@@ -1,4 +1,4 @@
-package bloder.com.core.textwatcher
+package bloder.com.blitzcore.textwatcher
 
 import android.text.Editable
 import android.text.TextWatcher

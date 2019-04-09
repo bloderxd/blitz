@@ -2,7 +2,7 @@ package bloder.com.blitz
 
 import android.view.View
 import android.widget.CheckBox
-import bloder.com.core.validation.DefaultBlitzValidations
+import bloder.com.blitzcore.validation.DefaultBlitzValidations
 
 class CustomValidationExample : DefaultBlitzValidations() {
 

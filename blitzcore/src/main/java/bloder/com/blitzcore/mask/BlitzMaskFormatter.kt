@@ -1,11 +1,10 @@
-package bloder.com.core.mask
+package bloder.com.blitzcore.mask
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
-
-import java.util.Collections
+import java.util.*
 
 private const val DEFAULT_MASK_CHAR = '#'
 

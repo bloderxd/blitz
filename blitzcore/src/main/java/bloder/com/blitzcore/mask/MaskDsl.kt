@@ -1,4 +1,4 @@
-package bloder.com.core.mask
+package bloder.com.blitzcore.mask
 
 import android.text.InputType
 import android.text.TextWatcher
