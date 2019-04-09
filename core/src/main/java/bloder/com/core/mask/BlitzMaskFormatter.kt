@@ -58,12 +58,12 @@ open class BlitzMaskFormatter(private val editText: EditText, masks: List<Mask>)
         var unlimitedCharsMask: Mask? = null
         var oldDiff = Integer.MAX_VALUE
         for (mask in masks) {
-            val newDiff = mask.mMaxCharsToApply - length
+            val newDiff = mask.maxCharsToApply - length
             if (newDiff in 0..(oldDiff - 1)) {
                 correctMask = mask
-                oldDiff = correctMask.mMaxCharsToApply - length
+                oldDiff = correctMask.maxCharsToApply - length
             }
-            if (mask.mMaxCharsToApply == Mask.MAX_CHAR_UNLIMITED) {
+            if (mask.maxCharsToApply == Mask.MAX_CHAR_UNLIMITED) {
                 unlimitedCharsMask = mask
             }
         }
@@ -73,12 +73,10 @@ open class BlitzMaskFormatter(private val editText: EditText, masks: List<Mask>)
         return correctMask
     }
 
-    fun unmask(string: String): String = string.replace("[^0-9]".toRegex(), "")
+    private fun unmask(string: String): String = string.replace("[^0-9]".toRegex(), "")
 
-    fun currentUnmaskedText(): String = unmask(editText.text.toString())
-
-    class Mask @JvmOverloads constructor(private val mMaskString: String,
-                                         private val mMaskChar: Char = DEFAULT_MASK_CHAR, val mMaxCharsToApply: Int = MAX_CHAR_UNLIMITED) {
+    class Mask @JvmOverloads constructor(private val maskString: String,
+                                         private val maskChar: Char = DEFAULT_MASK_CHAR, val maxCharsToApply: Int = MAX_CHAR_UNLIMITED) {
 
         constructor(maskString: String, maxCharsToApply: Int) : this(maskString, DEFAULT_MASK_CHAR, maxCharsToApply)
 
@@ -86,9 +84,9 @@ open class BlitzMaskFormatter(private val editText: EditText, masks: List<Mask>)
             var nextUnmaskedCharIndex = 0
             val masked = StringBuilder()
             var i = 0
-            while (i < mMaskString.length && nextUnmaskedCharIndex < unmaskedString.length) {
-                val maskStringChar = mMaskString[i]
-                if (maskStringChar == mMaskChar) {
+            while (i < maskString.length && nextUnmaskedCharIndex < unmaskedString.length) {
+                val maskStringChar = maskString[i]
+                if (maskStringChar == maskChar) {
                     masked.append(unmaskedString[nextUnmaskedCharIndex])
                     nextUnmaskedCharIndex++
                 } else {
