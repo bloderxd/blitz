@@ -1,11 +1,19 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'bloder'
+    repoName = 'Blitz'
+    groupId = 'bloder.com'
+    artifactId = 'blitz'
+    publishVersion = '0.0.1'
+    desc = 'Android form validator in a nice Kotlin DSL'
+    website = 'https://github.com/bloderxd/blitz'
+}
 
 android {
     compileSdkVersion 28
-
-
-
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
