@@ -21,7 +21,7 @@ First, we need to create our validations class, let's extend it from Blitz core 
 ```kotlin
 class MyCustomValidations : DefaultBlitzValidations() {
     
-    fun CheckBox.wasSelected() : View = bindViewValidation(this) {
+    fun CheckBox.isAccepted() : View = bindViewValidation(this) {
         this.isChecked
     }
 }
@@ -33,7 +33,7 @@ then we just need to tell Blitz what validations it must use:
 signup.enableWhenUsing(MyCustomValidations()) {
     email_field.isEmail()
     document_field.isFilled()
-    checkbox.wasSelected()
+    terms.isAccepted()
 }
 ```
 
@@ -47,7 +47,7 @@ Now we want to apply a mask in document field, let's consider this as a valid do
 signup.enableWhenUsing(MyCustomValidations()) {
     email_field.isEmail()
     document_field.isFilled() withMask "###.###.###-#"
-    checkbox.wasSelected()
+    terms.isAccepted()
 }
 ```
 
