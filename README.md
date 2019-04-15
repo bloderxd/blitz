@@ -8,7 +8,7 @@ With Blitz you can validate in real time a entire form, let's create an example
 For this example let's create a sign up form, in this form we just have an email and a document fields and a accept terms check box. First let's just consider that we want to enable the sign up button only when user writes a correct email in email field and fill with some value the document field, for this we can use the blitz core default validations: 
 
 ```kotlin
-signup_button.enableWhen {
+signup.enableWhen {
     email_field.isEmail()
     document_field.isFilled()
 }
@@ -30,9 +30,25 @@ class MyCustomValidations : DefaultBlitzValidations() {
 then we just need to tell Blitz what validations it must use:
 
 ```kotlin
-signup_button.enableWhenUsing(MyCustomValidations()) {
+signup.enableWhenUsing(MyCustomValidations()) {
     email_field.isEmail()
     document_field.isFilled()
     checkbox.wasSelected()
 }
 ```
+
+# Masks
+
+In a form creation some times masks are important, thinking on that Blitz comes with an API for numeric masks, let's use our sign up example again:
+
+Now we want to apply a mask in document field, let's consider this as a valid document `123.456.789-0`, Blitz mask api works basically considering the character `#` as a number and the rest of it part of the mask design then the correct design for our mask should be `###.###.###-#`:
+
+```kotlin
+signup.enableWhenUsing(MyCustomValidations()) {
+    email_field.isEmail()
+    document_field.isFilled() withMask "###.###.###-#"
+    checkbox.wasSelected()
+}
+```
+
+Just that! 
