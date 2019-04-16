@@ -88,3 +88,20 @@ fun main() = signup.enableWhenUsing(CustomValidationExample()) {
 `onValidationSuccess` and `onValidationError` are functions that provides the validation state of each field.
 
 ![alt_tag](https://media.giphy.com/media/fVcGJ5a1TPc1a8ns8L/giphy.gif)
+
+# Import
+
+##### Gradle
+```groovy
+implementation 'bloder.com:blitz:0.0.1'
+```
+
+##### Maven
+```xml
+<dependency>
+	<groupId>bloder.com</groupId>
+	<artifactId>blitz</artifactId>
+	<version>0.0.1</version>
+	<type>pom</type>
+</dependency>
+```
