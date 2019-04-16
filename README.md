@@ -14,6 +14,8 @@ signup.enableWhen {
 }
 ```
 
+![alt_tag](https://media.giphy.com/media/cNI8mNhLuFyZ5mSVPU/giphy.gif)
+
 Really simple, isn't? But now we want to improve some validations, we have an accept terms check box that is important in our form validation then we want to add in our validations a validation that user has selected the accept terms check box, for this let's use custom validations:
 
 First, we need to create our validations class, let's extend it from Blitz core defaut validations to get all the default validations:
