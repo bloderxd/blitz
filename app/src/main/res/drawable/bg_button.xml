@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/bg_button_not_enabled"/>
-    <item android:state_enabled="true" android:drawable="@drawable/bg_button_enabled"/>
+    <item android:state_enabled="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp"/>
+            <solid android:color="#EA1D2C"/>
+            <padding android:bottom="15dp" android:left="15dp" android:right="15dp" android:top="15dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp"/>
+            <solid android:color="#F5F0EB"/>
+            <padding android:bottom="15dp" android:left="15dp" android:right="15dp" android:top="15dp"/>
+        </shape>
+    </item>
 </selector>

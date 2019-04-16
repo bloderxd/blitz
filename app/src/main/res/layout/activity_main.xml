@@ -8,79 +8,85 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/edit1"
+        android:id="@+id/email_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"/>
-
-    <EditText
-        android:id="@+id/edit2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/edit1"/>
+        android:hint="E-mail"/>
 
     <EditText
-        android:id="@+id/edit3"
+        android:id="@+id/document_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/edit2"/>
+        android:layout_below="@+id/email_field"
+        android:hint="Document"/>
 
     <CheckBox
-        android:id="@+id/checkbox"
+        android:id="@+id/terms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit3"
+        android:layout_below="@+id/document_field"
         android:layout_marginLeft="30dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I accept the terms and blablabla"
+        android:layout_marginTop="217dp"
+        android:layout_marginLeft="60dp"/>
+
     <Button
-        android:id="@+id/button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/bg_button"/>
+        android:layout_below="@+id/terms"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_button"
+        android:text="Sign up"
+        android:textColor="@drawable/text_selector" />
 
     <ImageView
-        android:id="@+id/arrow1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/arrow_up_float"
-        android:layout_above="@id/button"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="100dp"
+        android:id="@+id/email_success_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/check_icon"
+        android:layout_alignRight="@+id/email_field"
+        android:layout_marginTop="40dp"
         android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/arrow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/arrow_up_float"
-        android:layout_above="@id/button"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="100dp"
+        android:id="@+id/email_error_icon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/error_icon"
+        android:layout_alignRight="@+id/email_field"
+        android:layout_marginTop="40dp"
         android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/arrow3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/arrow_up_float"
-        android:layout_above="@id/button"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="100dp"
+        android:id="@+id/document_success_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/check_icon"
+        android:layout_alignRight="@+id/document_field"
+        android:layout_marginTop="150dp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/document_error_icon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/error_icon"
+        android:layout_alignRight="@+id/document_field"
+        android:layout_marginTop="145dp"
         android:visibility="gone"/>
 
 </RelativeLayout>
