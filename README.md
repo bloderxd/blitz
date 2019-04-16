@@ -58,3 +58,33 @@ signup.enableWhenUsing(MyCustomValidations()) {
 Just that! 
 
 ![alt_tag](https://media.giphy.com/media/JmyJW5T4EnBXd7kYRq/giphy.gif)
+
+# Success and error cases
+
+The best forms are those that can handle every error case from each field and Blitz provides an API for that too. Let's create a simple error and success handling for our sign up form. Now when user writes a valid email I want to show a check icon and when user writes a not valid email I want to show an alert icon:
+
+```kotlin
+private fun showSuccessCaseFor(successView: View, errorView: View) {
+    successView.visibility = View.VISIBLE
+    errorView.visibility = View.GONE
+}
+
+private fun showErrorCaseFor(successView: View, errorView: View) {
+    successView.visibility = View.GONE
+    errorView.visibility = View.VISIBLE
+}
+
+fun main() = signup.enableWhenUsing(CustomValidationExample()) {
+    email_field.isEmail() onValidationSuccess {
+        showSuccessCaseFor(email_success_icon, email_error_icon)
+    } onValidationError {
+        showErrorCaseFor(email_success_icon, email_error_icon)
+    }
+    document_field.isFilled() withMask "###.###.###-#"
+    terms.isAccepted()
+}
+```
+
+`onValidationSuccess` and `onValidationError` are functions that provides the validation state of each field.
+
+![alt_tag](https://media.giphy.com/media/fVcGJ5a1TPc1a8ns8L/giphy.gif)
